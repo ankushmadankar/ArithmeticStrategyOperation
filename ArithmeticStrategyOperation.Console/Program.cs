@@ -1,19 +1,31 @@
 ﻿using Serilog;
-using ArithmeticStrategyOperation;
 using ArithmeticStrategyOperation.Services;
 using ArithmeticStrategyOperation.Interfaces;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.DependencyInjection;
+using ArithmeticStrategyOperation.Console;
 
 Log.Logger = new LoggerConfiguration()
             .WriteTo.Console()
             .WriteTo.File("log.txt")
             .CreateLogger();
 
-IWriteOutputStrategy writeOutputStrategy = new ConsoleWritingStrategy();
-IParsingStrategy parsingStrategy = new SumParsingStrategy();
+var services = new ServiceCollection();
+ConfigureServices(services);
 
-Log.Information("Parsing numbers from file {0}", Constant.FileName);
+await services
+    .BuildServiceProvider()
+    .GetService<Executor>()
+    .Execute();
 
-double result = await parsingStrategy.ParseNumbers();
-await writeOutputStrategy.Write($"Sum of numbers: {result}");
+static void ConfigureServices(IServiceCollection services)
+{
+    services.AddLogging(builder => builder.AddSerilog());
 
-Console.ReadKey();
+    var fileProvider = new PhysicalFileProvider(AppContext.BaseDirectory);
+    services.AddSingleton<IFileProvider>(fileProvider);
+
+    services.AddSingleton<Executor>();
+    services.AddTransient<IParsingStrategy, SumParsingStrategy>();
+    services.AddTransient<IWriteOutputStrategy, ConsoleWritingStrategy>();
+}

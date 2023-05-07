@@ -1,23 +1,20 @@
-﻿using Serilog;
+﻿using Microsoft.Extensions.Logging;
 using ArithmeticStrategyOperation.Interfaces;
 
 namespace ArithmeticStrategyOperation.Services
 {
     public class ConsoleWritingStrategy : IWriteOutputStrategy
     {
-        private readonly string outputStringFormat;
-        public ConsoleWritingStrategy(string outputStringFormat)
-        {
-            this.outputStringFormat = outputStringFormat;
-        }
+        private readonly ILogger<ConsoleWritingStrategy> logger;
 
-        public ConsoleWritingStrategy() : this("{0}")
+        public ConsoleWritingStrategy(ILogger<ConsoleWritingStrategy> logger)
         {
+            this.logger = logger;
         }
 
         public async Task Write<TResult>(TResult result)
         {
-            Log.Information(outputStringFormat, result);
+            logger.LogInformation($"{result}");
             await Task.CompletedTask;
         }
     }
