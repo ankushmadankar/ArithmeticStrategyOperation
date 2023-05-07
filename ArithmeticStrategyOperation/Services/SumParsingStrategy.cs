@@ -6,18 +6,18 @@ namespace ArithmeticStrategyOperation.Services
 {
     public class SumParsingStrategy : IParsingStrategy
     {
-        private readonly ILogger<SumParsingStrategy> logger;
-        private readonly IFileProvider fileProvider;
+        private readonly ILogger<SumParsingStrategy> _logger;
+        private readonly IFileProvider _fileProvider;
 
         public SumParsingStrategy(ILogger<SumParsingStrategy> logger, IFileProvider fileProvider)
         {
-            this.logger = logger;
-            this.fileProvider = fileProvider;
+            _logger = logger;
+            _fileProvider = fileProvider;
         }
 
         public async Task<double> ParseNumbers()
         {
-            IFileInfo fileInfo = fileProvider.GetFileInfo(Constant.FileName);
+            IFileInfo fileInfo = _fileProvider.GetFileInfo(Constant.FileName);
 
             using Stream stream = fileInfo.CreateReadStream();
             using StreamReader reader = new StreamReader(stream);
@@ -34,7 +34,7 @@ namespace ArithmeticStrategyOperation.Services
                 }
                 else
                 {
-                    logger.LogWarning("Error parsing number {0}", value);
+                    _logger.LogWarning("Error parsing number {0}", value);
                 }
             });
 

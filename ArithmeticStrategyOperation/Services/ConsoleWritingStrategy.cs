@@ -5,16 +5,16 @@ namespace ArithmeticStrategyOperation.Services
 {
     public class ConsoleWritingStrategy : IWriteOutputStrategy
     {
-        private readonly ILogger<ConsoleWritingStrategy> logger;
+        private readonly ILogger<ConsoleWritingStrategy> _logger;
 
         public ConsoleWritingStrategy(ILogger<ConsoleWritingStrategy> logger)
         {
-            this.logger = logger;
+            _logger = logger;
         }
 
         public async Task Write<TResult>(TResult result)
         {
-            logger.LogInformation($"{result}");
+            _logger.LogInformation($"{result}");
             await Task.CompletedTask;
         }
     }

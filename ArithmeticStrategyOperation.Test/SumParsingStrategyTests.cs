@@ -10,13 +10,13 @@ namespace ArithmeticStrategyOperation.Test
 {
     public class SumParsingStrategyTests
     {
-        private readonly Mock<ILogger<SumParsingStrategy>> mockLogger;
-        private readonly Mock<IFileProvider> mockFileProvider;
+        private readonly Mock<ILogger<SumParsingStrategy>> _mockLogger;
+        private readonly Mock<IFileProvider> _mockFileProvider;
 
         public SumParsingStrategyTests()
         {
-            mockLogger = new Mock<ILogger<SumParsingStrategy>>();
-            mockFileProvider = new Mock<IFileProvider>();
+            _mockLogger = new Mock<ILogger<SumParsingStrategy>>();
+            _mockFileProvider = new Mock<IFileProvider>();
         }
 
         [Fact]
@@ -29,10 +29,10 @@ namespace ArithmeticStrategyOperation.Test
 
             mockFileInfo.Setup(x => x.CreateReadStream())
                 .Returns(new MemoryStream(emptyFileBytes));
-            mockFileProvider.Setup(x => x.GetFileInfo(Constant.FileName))
+            _mockFileProvider.Setup(x => x.GetFileInfo(Constant.FileName))
                 .Returns(mockFileInfo.Object);
 
-            var strategy = new SumParsingStrategy(mockLogger.Object, mockFileProvider.Object);
+            var strategy = new SumParsingStrategy(_mockLogger.Object, _mockFileProvider.Object);
 
             // Act
             double result = await strategy.ParseNumbers();
@@ -50,10 +50,10 @@ namespace ArithmeticStrategyOperation.Test
             var mockFileInfo = new Mock<IFileInfo>();
             mockFileInfo.Setup(x => x.CreateReadStream())
                 .Returns(new MemoryStream(fileBytes));
-            mockFileProvider.Setup(x => x.GetFileInfo(Constant.FileName))
+            _mockFileProvider.Setup(x => x.GetFileInfo(Constant.FileName))
                 .Returns(mockFileInfo.Object);
 
-            var strategy = new SumParsingStrategy(mockLogger.Object, mockFileProvider.Object);
+            var strategy = new SumParsingStrategy(_mockLogger.Object, _mockFileProvider.Object);
 
             // Act
             double result = await strategy.ParseNumbers();
@@ -71,10 +71,10 @@ namespace ArithmeticStrategyOperation.Test
             var mockFileInfo = new Mock<IFileInfo>();
             mockFileInfo.Setup(x => x.CreateReadStream())
                 .Returns(new MemoryStream(fileBytes));
-            mockFileProvider.Setup(x => x.GetFileInfo(Constant.FileName))
+            _mockFileProvider.Setup(x => x.GetFileInfo(Constant.FileName))
                 .Returns(mockFileInfo.Object);
 
-            var strategy = new SumParsingStrategy(mockLogger.Object, mockFileProvider.Object);
+            var strategy = new SumParsingStrategy(_mockLogger.Object, _mockFileProvider.Object);
 
             // Act
             double result = await strategy.ParseNumbers();
@@ -82,7 +82,7 @@ namespace ArithmeticStrategyOperation.Test
             // Assert
             result.ShouldBe(11);
 
-            mockLogger.Verify(x => x.Log(
+            _mockLogger.Verify(x => x.Log(
                 LogLevel.Warning,
                 It.IsAny<EventId>(),
                 It.Is<It.IsAnyType>((object v, Type _) => v.ToString().Contains("Error parsing number")),

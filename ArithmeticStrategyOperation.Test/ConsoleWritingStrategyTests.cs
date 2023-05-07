@@ -7,11 +7,11 @@ namespace ArithmeticStrategyOperation.Test
 {
     public class ConsoleWritingStrategyTests
     {
-        private readonly Mock<ILogger<ConsoleWritingStrategy>> mockLogger;
+        private readonly Mock<ILogger<ConsoleWritingStrategy>> _mockLogger;
 
         public ConsoleWritingStrategyTests()
         {
-            mockLogger = new Mock<ILogger<ConsoleWritingStrategy>>();
+            _mockLogger = new Mock<ILogger<ConsoleWritingStrategy>>();
         }
 
         [Fact]
@@ -19,13 +19,13 @@ namespace ArithmeticStrategyOperation.Test
         {
             // Arrange
             const string expectedResult = "Sum of numbers: 30";
-            var strategy = new ConsoleWritingStrategy(mockLogger.Object);
+            var strategy = new ConsoleWritingStrategy(_mockLogger.Object);
 
             // Act
             await strategy.Write(expectedResult);
 
             // Assert
-            mockLogger.Verify(x => x.Log(
+            _mockLogger.Verify(x => x.Log(
                 LogLevel.Information,
                 It.IsAny<EventId>(),
                 It.Is<It.IsAnyType>((object v, Type _) => v.ToString().Contains(expectedResult)),
