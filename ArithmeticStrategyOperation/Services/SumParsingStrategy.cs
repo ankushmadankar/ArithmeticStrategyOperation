@@ -1,21 +1,10 @@
-﻿using ArithmeticStrategyOperation.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Serilog;
+using ArithmeticStrategyOperation.Interfaces;
 
 namespace ArithmeticStrategyOperation.Services
 {
     public class SumParsingStrategy : IParsingStrategy
     {
-        private readonly IWriteOutputStrategy writeOutputStrategy;
-
-        public SumParsingStrategy(IWriteOutputStrategy writeOutputStrategy)
-        {
-            this.writeOutputStrategy = writeOutputStrategy;
-        }
-
         public async Task<double> ParseNumbers()
         {
             string filePath = Path.Combine(AppContext.BaseDirectory, Constant.FileName);
@@ -31,7 +20,7 @@ namespace ArithmeticStrategyOperation.Services
                 }
                 else
                 {
-                    writeOutputStrategy.Write(string.Format("Error parsing number {0}", value));
+                    Log.Warning("Error parsing number {0}", value);
                 }
             });
 

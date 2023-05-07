@@ -9,9 +9,9 @@ Log.Logger = new LoggerConfiguration()
             .CreateLogger();
 
 IWriteOutputStrategy writeOutputStrategy = new ConsoleWritingStrategy();
-IParsingStrategy parsingStrategy = new SumParsingStrategy(writeOutputStrategy);
+IParsingStrategy parsingStrategy = new SumParsingStrategy();
 
-await writeOutputStrategy.Write($"Parsing numbers from file {Constant.FileName}");
+Log.Information("Parsing numbers from file {0}", Constant.FileName);
 
 double result = await parsingStrategy.ParseNumbers();
 await writeOutputStrategy.Write($"Sum of numbers: {result}");

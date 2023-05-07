@@ -1,5 +1,5 @@
-﻿using ArithmeticStrategyOperation.Interfaces;
-using Serilog;
+﻿using Serilog;
+using ArithmeticStrategyOperation.Interfaces;
 
 namespace ArithmeticStrategyOperation.Services
 {
