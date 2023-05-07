@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArithmeticStrategyOperation.Console", "ArithmeticStrategyOperation.Console\ArithmeticStrategyOperation.Console.csproj", "{82E22130-857B-4081-9EEA-A8FF6D5D0B53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticStrategyOperation", "ArithmeticStrategyOperation\ArithmeticStrategyOperation.csproj", "{DF9E98FB-45A2-43A0-9CBD-F67116446C89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticStrategyOperation.Test", "ArithmeticStrategyOperation.Test\ArithmeticStrategyOperation.Test.csproj", "{12F954A5-FACE-4E1B-95E3-7622A6E49E9F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82E22130-857B-4081-9EEA-A8FF6D5D0B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82E22130-857B-4081-9EEA-A8FF6D5D0B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82E22130-857B-4081-9EEA-A8FF6D5D0B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82E22130-857B-4081-9EEA-A8FF6D5D0B53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF9E98FB-45A2-43A0-9CBD-F67116446C89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9E98FB-45A2-43A0-9CBD-F67116446C89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9E98FB-45A2-43A0-9CBD-F67116446C89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9E98FB-45A2-43A0-9CBD-F67116446C89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12F954A5-FACE-4E1B-95E3-7622A6E49E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12F954A5-FACE-4E1B-95E3-7622A6E49E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12F954A5-FACE-4E1B-95E3-7622A6E49E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12F954A5-FACE-4E1B-95E3-7622A6E49E9F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5869F75-3658-401E-9EB7-9C174172838B}
+	EndGlobalSection
+EndGlobal
