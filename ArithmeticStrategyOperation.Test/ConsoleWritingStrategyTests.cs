@@ -15,7 +15,7 @@ namespace ArithmeticStrategyOperation.Test
         }
 
         [Fact]
-        public async Task Write_ShouldLogInformation_WithResultToString()
+        public async Task WriteOutput_ShouldLogInformation_WithStringResult()
         {
             // Arrange
             const string expectedResult = "Sum of numbers: 30";

@@ -3,6 +3,9 @@ using ArithmeticStrategyOperation.Interfaces;
 
 namespace ArithmeticStrategyOperation.Console
 {
+    /// <summary>
+    /// Executor will work as startup and make use of parsing strategy with output strategy
+    /// </summary>
     internal class Executor
     {
         private readonly IParsingStrategy _parsingStrategy;
