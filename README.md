@@ -3,8 +3,6 @@
 Problem Statement: Demostration of Stratergy pattern using simple Arithmetic Operation.
 
 Solution:
-To meet requirements, we can follow the SOLID principles and use a design pattern like the Strategy pattern.
-
 The Strategy pattern allows us to define a family of algorithms, encapsulate each one as an object, and make them interchangeable. This way, we can easily add or replace algorithms without changing the core logic of the application.
 
 - `IParsingStrategy`: Interface will provide contract to follow the how parsing will done on input provided. Parse numbers with required strategy e.g. Sum, Multiplication
