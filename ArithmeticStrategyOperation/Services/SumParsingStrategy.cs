@@ -22,15 +22,15 @@ namespace ArithmeticStrategyOperation.Services
             using Stream stream = fileInfo.CreateReadStream();
             using StreamReader reader = new StreamReader(stream);
 
-            string fileContent = reader.ReadToEnd();
+            string fileContent = await reader.ReadToEndAsync();
             string[] values = fileContent.Split(Constant.StringSeperator, StringSplitOptions.RemoveEmptyEntries);
-            double sum = 0;
+            int sum = 0;
 
             Parallel.ForEach(values, value =>
             {
                 if (int.TryParse(value, out int parsedNumber))
                 {
-                    sum += parsedNumber;
+                    Interlocked.Add(ref sum, parsedNumber);
                 }
                 else
                 {
@@ -38,7 +38,7 @@ namespace ArithmeticStrategyOperation.Services
                 }
             });
 
-            return await Task.FromResult(sum);
+            return sum;
         }
     }
 }
