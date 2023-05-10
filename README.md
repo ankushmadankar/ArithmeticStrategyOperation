@@ -1,6 +1,6 @@
 # ArithmeticStrategyOperation
 
-Problem Statement: Given.
+Problem Statement: Demostration of Stratergy pattern using simple Arithmetic Operation.
 
 Solution:
 To meet requirements, we can follow the SOLID principles and use a design pattern like the Strategy pattern.
